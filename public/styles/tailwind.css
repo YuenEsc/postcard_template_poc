@@ -1,2 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
+
+@layer base {
+
+    :root{
+        --primary-text-color: 4 32 64;
+        --secondary-text-color: 122 134 154;
+        --bg-light-blue-color: 249 250 251;
+        --black-color: 0 0 0;
+        --gray-500-color: 158 158 158;
+        --gray-50-color: 250 250 250;
+        --amber-500-color: 255 193 7;
+        --amber-50-color: 255 193 7;
+        --orange-500-color: 255 152 0;
+        --orange-50-color: 255 243 224;
+        --red-500-color: 244 67 54;
+        --red-50-color: 255 235 238;
+        --blue-50-color: 227 242 253;
+        --info-color: 0 145 234;
+    }
+
+
+}
