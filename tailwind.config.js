@@ -30,6 +30,10 @@ module.exports =
         blue:{
           50: 'rgb( var(--blue-50-color) )'
         },
+        green:{
+          500: 'rgb( var(--green-500-color) )',
+          50: 'rgb( var(--green-50-color) )'
+        },
         info: 'rgb( var(--info-color) ) '
       },
       extend: {

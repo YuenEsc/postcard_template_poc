@@ -2,6 +2,7 @@ html.h-full.w-full.flex.flex-col
 
     head
         link(rel="stylesheet", type="text/css" href="styles/style.css")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" )
         style.
 
             #header-current-page:before {
@@ -74,7 +75,7 @@ html.h-full.w-full.flex.flex-col
             }
     title
 
-    header.flex.flex-col.text-base.px-4
+    header.flex.flex-col.text-sm.px-4
         .flex.w-full.justify-between.items-start
             div
                 p.whitespace-pre.leading-tight.uppercase
@@ -85,18 +86,18 @@ html.h-full.w-full.flex.flex-col
                     | ROCHESTER MN, 55903
             div
                 img.h-28.float-right(src="https://upload.wikimedia.org/wikipedia/commons/2/21/ZDF_logo%21_Logo_2021.svg")
-        .flex.w-full.justify-between.items-center.py-4
+        .flex.w-full.justify-between.items-start.py-4.pl-2
             div
-                p.font-bold.mb-2 Invoice for:
-                p.font-black.whitespace-pre.leading.text-xs ATTN:
+                p.font-bold.mb-2.leading-tight Invoice for:
+                p.font-black.whitespace-pre.leading-tight.text-xs ATTN:
 
-                p.whitespace-pre.leading
+                p.whitespace-pre.leading-tight
                     | LAACK, KARL
                     | CITY OF RIVIERA BEACH PUBLIC WORKS
                     | 1481 WEST 15TH STREET
                     | RIVIERA BEACH, FL 33404
             div.flex.flex-col.justify-center.items-end
-               .flex.justify-between.w-72
+               .flex.justify-between.w-72.pt-4
                    .font-bold Account No:
                    div 221203001008
                .flex.justify-between.w-72
@@ -315,49 +316,73 @@ html.h-full.w-full.flex.flex-col
                     td &nbsp;
                 tr
                     td &nbsp;
-    footer.w-full.bottom-0.text-xs.flex.flex-1.flex-col.justify-end
-        .flex.flex-col.items-end.py-2.px-4.border-t-2.mx-2(class="border-black/10")
-            .text-xs.text-textSecondary Invoice total
-            .font-semibold.text-xl $42.51
-        .flex.justify-between.py-2.mx-2.border-t-2(class="border-black/10")
-            .flex-1.flex
-                .flex.flex-col.items-end.p-2.m-2.border-2.rounded-lg.border-gray-500.bg-gray-50
-                    .text-textSecondary Current
-                    .font-normal.text-lg $42.51
-                .flex.flex-col.items-end.p-2.m-2.border-2.rounded-lg(class="border-amber-500 bg-amber-50/[.1]")
-                    .text-textSecondary 31-60 days
-                    .font-normal.text-lg $10
-                .flex.flex-col.items-end.p-2.m-2.border-2.rounded-lg.border-orange-500.bg-orange-50
-                    .text-textSecondary 61-90 days
-                    .font-normal.text-lg $10
-                .flex.flex-col.items-end.p-2.m-2.border-2.rounded-lg.border-red-500.bg-red-50
-                    .text-textSecondary Over 90 days
-                    .font-normal.text-lg $10
+    footer.w-full.text-xs.pb-14
+        .flex.justify-between.py-2.px-4.border-t-2(class="border-black/10")
+            .flex.flex-col.text-textSecondary
+                div
+                    span Terms:&nbsp;
+                    span Net 15
+                div
+                    span Invoice created on date
+            .flex.items-center
+                .text-textSecondary Invoice total&nbsp;|&nbsp;
+                .font-medium $42.51
+        .flex.justify-between.py-2.border-t-2(class="border-black/10")
+            .flex-1.flex.flex-col
+                .flex.flex-1
+                    if(invoice.arSummary.showAgingBuckets)
+                        .flex.flex-col.items-end.px-2.pt-2.m-2.border-2.rounded-lg.border-gray-500.bg-gray-50
+                            .text-textSecondary Current
+                            .text-base.font-medium $42.51
+                        .flex.items-center.justify-center.text-textSecondary.text-lg +
+                        .flex.flex-col.items-end.px-2.pt-2.m-2.border-2.rounded-lg(class="border-amber-500 bg-amber-50/[.1]")
+                            .text-textSecondary 31-60 days
+                            .text-base.font-medium $42.51
+                        .flex.items-center.justify-center.text-textSecondary.text-lg +
+                        .flex.flex-col.items-end.px-2.pt-2.m-2.border-2.rounded-lg.border-orange-500.bg-orange-50
+                            .text-textSecondary 61-90 days
+                            .text-base.font-medium $42.51
+                        .flex.items-center.justify-center.text-textSecondary.text-lg +
+                        .flex.flex-col.items-end.px-2.pt-2.m-2.border-2.rounded-lg.border-red-500.bg-red-50
+                            .text-textSecondary Over 90 days
+                            .text-base.font-medium $42.51
+                    else
+                        .flex.flex-col.items-end.px-2.pt-2.m-2.border-2.rounded-lg.border-gray-500.bg-gray-50
+                            .text-textSecondary Current
+                            .text-base.font-medium $42.51
+                    .flex.items-center.justify-center.text-textSecondary.text-lg -
+                    .flex.flex-col.items-end.p-2.m-2.border-2.rounded-lg.border-green-500.bg-green-50
+                        .text-textSecondary Account credit
+                        .text-base.font-medium $42.51
+                    .flex.items-center.justify-center.text-textSecondary.text-lg =
+                .flex-1.px-2.text-textSecondary Current includes this invoice & 1 more
 
             .flex.flex-col.items-end.py-2.pr-4.pl-8.m-2.border-2.rounded-lg.border-black
                 .text-textSecondary.uppercase Pay now
-                .text-lg $72.51
-        .flex.justify-between.items-start.py-2.px-2.mx-2
+                .font-medium.text-lg $42.51
+        .flex.justify-between.items-start.p-2
+            .flex-col.flex-1.h-fit
+                .flex.flex-row.items-center
+                    i.fas.fa-check-circle.mr-1.text-green-500
+                    p.text-green-500 Autopay
+                p Your automatic payment will process on the invoice due
+                    br
+                    | date
+            .py-2.px-4.mx-2.rounded-lg.bg-blue-50.text-textSecondary.text-xs
+                | Total balance due includes current the invoice plus any
+                br
+                | past due charges
+        .flex.justify-between.items-start.py-2
             p.flex-1.h-fit.border-l-2.pl-2.text-xs(class="border-black/10")
                 | Please visit &nbsp;
                 a.text-info.underline.pointer(href="www.sunrisesanitation.haulerhero.com") www.sunrisesanitation.haulerhero.com
                 | &nbsp; to  make a payment
                 br
                 | Additional charges will be incurred if payment is not received by due date.
-            .py-2.px-4.mx-2.rounded-lg.bg-blue-50.text-textSecondary.text-xs
-                | Total balance due includes
-                br
-                | current the invoice plus any
-                br
-                | past due charges
-    .px-4.fixed.bottom-8.w-full.flex.flex-col.justify-start.py-2.px-4.border-t-2.mt-4.text-xs(class="border-black/10")
+    .px-4.fixed.bottom-0.w-full.flex.flex-col.justify-start.py-2.mx-4.border-t-2.mt-4.text-xs(class="border-black/10")
         .flex.w-full.justify-start
             p
-                | Tel. 1-860-423-8821 | Mon - Fri 6:00 PM - 1:00 AM
+                | Tel. 111111111
         .flex.flex-row.w-full.justify-between
-            p 2447 Center Avenue, Fresno, CA 93711 | &nbsp;
-                a(src="www.sunrisesanitation.haulerhero.com") www.sunrisesanitation.haulerhero.com
-            div
-                span#footer-current-page
-                span /
-                span#footer-total-pages
+            p address here | &nbsp;
+                a(href="www.sunrisesanitation.haulerhero.com") www.sunrisesanitation.haulerhero.com

@@ -1,7 +1,8 @@
+@import 'fontawesome-free/css/all.min.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 
 @layer base {
@@ -19,6 +20,8 @@
         --orange-50-color: 255 243 224;
         --red-500-color: 244 67 54;
         --red-50-color: 255 235 238;
+        --green-500-color: 76 175 80;
+        --green-50-color: 232 245 233;
         --blue-50-color: 227 242 253;
         --info-color: 0 145 234;
     }
